@@ -29,7 +29,7 @@ class StudentDBTest {
 
         StudentDB testDB = new StudentDB(studentList);
         StudentDB expectedList = new StudentDB(expected);
-        testDB.removeWithId(20005);
+        testDB.remove(20005);
         //assertEquals(expected, testDB.getAllStudents())
 
         Assertions.assertEquals(expected, testDB.getAllStudents());

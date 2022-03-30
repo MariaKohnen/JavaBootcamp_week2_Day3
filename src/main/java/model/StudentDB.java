@@ -1,22 +1,32 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StudentDB {
 
-    private List<Student> students = new ArrayList<>();
+    private Map<Integer, Student> students;
 
     public StudentDB() {
     }
 
-    public StudentDB(ArrayList<Student> insertedStudents) {
-        this.students = insertedStudents;
+    public StudentDB(List<Student> students) {
+        this.students = new HashMap<>();
+        for (Student student : students) {
+            this.students.put(student.getId(), student);
+        }
     }
 
 
     public List<Student> getAllStudents() {
-        return students;
+        List<Student> list = new ArrayList<>();
+        for (Map.Entry<Integer, Student> entry : students.entrySet()
+             ) {
+            list.add(entry.getValue());
+        }
+        return list;
     }
 
     public Student randomStudent() {
@@ -25,24 +35,16 @@ public class StudentDB {
     }
 
     public void add(Student newStudent) {
-        students.add(newStudent);
+        students.put(newStudent.getId(), newStudent);
     }
 
-    public void remove(Student student) {
-        students.remove(student);
+
+    public void remove(int id) {
+        students.remove(id);
     }
 
-    public void remove(int index) {
-        students.remove(index);
-    }
-
-    public void removeWithId(int id) {
-        for (Student student : this.students) {
-            if (student.getId() == id) {
-                students.remove(student);
-                break;
-            }
-        }
+    public Student findById (int id) {
+        return students.get(id);
     }
 
     @Override
@@ -51,5 +53,4 @@ public class StudentDB {
                 "students=" + students +
                 '}';
     }
-
 }

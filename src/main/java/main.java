@@ -27,7 +27,7 @@ public class main {
         studentArrayList.add(student3);
 
         System.out.println(studentArrayList.getAllStudents());
-        studentArrayList.removeWithId(20005);
+        studentArrayList.remove(20005);
         System.out.println(studentArrayList.getAllStudents());
 
 
