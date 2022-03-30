@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StudentDB {
@@ -10,12 +9,11 @@ public class StudentDB {
 
     public StudentDB() {
     }
-/*
+
     public StudentDB(ArrayList<Student> insertedStudents) {
         this.students = insertedStudents;
     }
 
- */
 
     public List<Student> getAllStudents() {
         return students;
@@ -36,6 +34,15 @@ public class StudentDB {
 
     public void remove(int index) {
         students.remove(index);
+    }
+
+    public void removeWithId(int id) {
+        for (Student student : this.students) {
+            if (student.getId() == id) {
+                students.remove(student);
+                break;
+            }
+        }
     }
 
     @Override
