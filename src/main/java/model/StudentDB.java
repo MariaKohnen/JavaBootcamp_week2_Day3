@@ -1,43 +1,48 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StudentDB {
 
-    protected Student[] students;
+    private List<Student> students = new ArrayList<>();
 
-    public StudentDB(Student[] insertedStudents) {
+    public StudentDB() {
+    }
+/*
+    public StudentDB(ArrayList<Student> insertedStudents) {
         this.students = insertedStudents;
     }
 
-    public Student[] getAllStudents() {
+ */
+
+    public List<Student> getAllStudents() {
         return students;
+    }
+
+    public Student randomStudent() {
+        int i = (int) (Math.random() * students.size());
+        return students.get(i);
+    }
+
+    public void add(Student newStudent) {
+        students.add(newStudent);
+    }
+
+    public void remove(Student student) {
+        students.remove(student);
+    }
+
+    public void remove(int index) {
+        students.remove(index);
     }
 
     @Override
     public String toString() {
-        return "students=" + Arrays.toString(students) +
+        return "StudentDB{" +
+                "students=" + students +
                 '}';
     }
 
-    public Student randomStudent() {
-        int i = (int) (Math.random() * students.length);
-        return students[i];
-    }
-
-    public void add(Student newStudent) {
-        Student[] newStudents = Arrays.copyOf(students, students.length +1);
-        newStudents[newStudents.length-1] = newStudent;
-        this.students = newStudents;
-     }
-
-     public void remove(int id) {
-         for (int i = 0; i < students.length; i++) {
-             //Remove and create new array
-             Student[] newStudents = Arrays.copyOf(students, students.length-1);
-             System.arraycopy(students, 0, newStudents, 0, i);
-             System.arraycopy(students, i+1, newStudents, i, students.length -(i+1));
-             this.students = newStudents;
-         }
-     }
 }

@@ -22,16 +22,12 @@ public class main {
         System.out.println(student1.toString());
         System.out.println(student2.toString());
 
-        StudentDB studentDB = new StudentDB( new Student[] {
-                new Student("Maria", 2000),
-                new Student("Paul", 20001),
-                new Student("Hanna", 20002),
-        });
+        StudentDB studentArrayList = new StudentDB();
+        studentArrayList.add(student2);
+        studentArrayList.add(student3);
 
-        System.out.println(studentDB.toString());
-        System.out.println(studentDB.randomStudent());
-        studentDB.add(student3);
-        System.out.println(studentDB.toString());
+        System.out.println(studentArrayList.getAllStudents());
+        System.out.println(studentArrayList.toString());
 
     }
 }
